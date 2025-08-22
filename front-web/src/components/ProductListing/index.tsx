@@ -1,14 +1,17 @@
+import type { Product } from "../../types/product";
 import ProductCard from "../ProductCard";
 
-export default function ProductListing(){
+type Props = {
+    products: Product[];
+}
+
+export default function ProductListing({products}: Props){
     return (
         <div className="orders-list-container">
             <div className="orders-list-items">
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {products.map(product => (
+                    <ProductCard key={product.id} product={product}/>
+                ))}
             </div>
         </div>
     );
