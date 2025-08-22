@@ -16,7 +16,7 @@ export default function OrderSummary({ amount, totalPrice, onSubmit }: Props) {
                         ITEMS SELECIONADOS
                     </span>
                     <span className="order-summary-total">
-                        <strong>{formatPrice(totalPrice)}</strong>
+                        <strong className="order-summary-price">{formatPrice(totalPrice)}</strong>
                         VALOR TOTAL
                     </span>
                 </div>
@@ -24,7 +24,7 @@ export default function OrderSummary({ amount, totalPrice, onSubmit }: Props) {
                     className="order-summary-make-order"
                     onClick={onSubmit}
                 >
-                    FAZER PEDIDO
+                    ENVIAR PEDIDO
                 </button>
             </div>
         </div>
