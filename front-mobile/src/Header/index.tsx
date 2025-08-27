@@ -1,11 +1,25 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { RootStackParamList } from '../NavigationTypes';
+
+type navigationProps = StackNavigationProp<RootStackParamList>;
 
 export default function Header() {
+
+    const navigation = useNavigation<navigationProps>();
+
+    const handleOnPress = () => {
+        navigation.navigate('Home');
+    }
+
     return (
-        <View style={styles.container}>
-            <Image source={require('../assets/logo.png')} />
-            <Text style={styles.text}>DS Delivery</Text>
-        </View>
+        <TouchableWithoutFeedback onPress={handleOnPress}>
+            <View style={styles.container}>
+                <Image source={require('../assets/logo.png')} />
+                <Text style={styles.text}>DS Delivery</Text>
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
 

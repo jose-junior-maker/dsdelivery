@@ -1,15 +1,24 @@
+import { useNavigation } from '@react-navigation/native';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
+import Header from '../Header';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../NavigationTypes';
+
+type navigationProps = StackNavigationProp<RootStackParamList>;
 
 export default function Home() {
 
+    const navigation = useNavigation<navigationProps>();
+
     const handleOnPress = () => {
-        
+        navigation.navigate('Orders');
     }
 
     return (
         <>
-            <View>
+            <Header />
+            <View style={styles.container}>
                 <Image source={require('../assets/deliveryman.png')} />
                 <Text style={styles.title}>Acompanhe os pedidos e {'\n'} entregue no prazo!</Text>
                 <Text style={styles.subTitle}>Receba todos os pedidos do seu {'\n'} restaurante na palma da sua mão</Text>

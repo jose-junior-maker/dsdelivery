@@ -4,24 +4,27 @@ import Header from './src/Header';
 import { OpenSans_400Regular, OpenSans_700Bold, useFonts } from '@expo-google-fonts/open-sans';
 import Home from './src/Home';
 import AppLoading from 'expo-app-loading';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Routes from './src/Routes';
 
 
 export default function App() {
 
   const [fontsLoaded, error] = useFonts({
-    OpenSans_400Regular,OpenSans_700Bold
+    OpenSans_400Regular, OpenSans_700Bold
   });
 
-  if(!fontsLoaded){
+  if (!fontsLoaded) {
     return <AppLoading />
   }
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <StatusBar style="auto" />
-      <Home />
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <Routes />
+      </View>
+    </GestureHandlerRootView>
   );
 }
 
