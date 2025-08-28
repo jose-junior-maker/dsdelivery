@@ -29,11 +29,11 @@ export default function OrderDetails({ route }: Props) {
     const handleConfirmDelivery = () => {
         confirmDelivery(order.id)
             .then(() => {
-                Alert.alert(`Pedido ${order.id} confirmado com sucesso!`);
+                Alert.alert(`Pedido ${order.id} entrege com sucesso!`);
                 navigation.navigate('Orders');
             })
             .catch(() => {
-                Alert.alert(`Houve um erro ao confirmar o pedido ${order.id}`);
+                Alert.alert(`Houve um erro ao confirmar entrega do pedido ${order.id}`);
             }
             );
     }

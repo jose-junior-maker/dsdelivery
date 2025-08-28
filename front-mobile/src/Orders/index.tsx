@@ -21,7 +21,7 @@ export default function Orders() {
         setIsLoading(true);
         fetchOrders()
             .then(response => setOrders(response.data))
-            .catch(error => Alert.alert('Erro ao buscar os pedidos'))
+            .catch(error => Alert.alert('Erro ao buscar os pedidos', error.message))
             .finally(() => setIsLoading(false));
     }
 
@@ -32,6 +32,7 @@ export default function Orders() {
     }, [isFocused]);
 
     const handleOnPress = (order: Order) => {
+        console.log('Botão tocado!', order);
         navigation.navigate('OrderDetails', { order });
     }
 
@@ -40,40 +41,21 @@ export default function Orders() {
     return (
         <>
             <Header />
-            {/*<ScrollView style={styles.container}>
+            <ScrollView style={styles.container}>
                 {isLoading ? (
                     <Text>Buscando pedidos...</Text>
                 ) : (
                     orders.map(order => (
-                        <TouchableOpacity
+                        <TouchableWithoutFeedback 
                             key={order.id}
                             onPress={() => handleOnPress(order)}
                         >
                             <OrderCard order={order} />
-                        </TouchableOpacity>
+                        </TouchableWithoutFeedback>
                     ))
                 )}
 
-            </ScrollView>*/}
-            {isLoading ? (
-                <Text>Buscando pedidos...</Text>
-            ) : (
-                <FlatList
-                    style={styles.container}
-                    data={orders}
-                    keyExtractor={(item) => item.id.toString()} // garante chave única
-                    renderItem={({ item }) => (
-                        <Pressable
-                            onPress={() => handleOnPress(item)}
-                            style={({ pressed }) => [
-                                styles.wrapper, pressed && styles.wrapperPressed
-                            ]}
-                        >
-                            <OrderCard order={item} />
-                        </Pressable>
-                    )}
-                />
-            )}
+            </ScrollView>
         </>
     );
 }
