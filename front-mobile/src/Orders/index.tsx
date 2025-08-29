@@ -32,7 +32,6 @@ export default function Orders() {
     }, [isFocused]);
 
     const handleOnPress = (order: Order) => {
-        console.log('Botão tocado!', order);
         navigation.navigate('OrderDetails', { order });
     }
 
@@ -46,12 +45,12 @@ export default function Orders() {
                     <Text>Buscando pedidos...</Text>
                 ) : (
                     orders.map(order => (
-                        <TouchableWithoutFeedback 
+                        <Pressable 
                             key={order.id}
                             onPress={() => handleOnPress(order)}
                         >
-                            <OrderCard order={order} />
-                        </TouchableWithoutFeedback>
+                            <OrderCard order={order}/>
+                        </Pressable>
                     ))
                 )}
 

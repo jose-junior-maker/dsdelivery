@@ -28,7 +28,7 @@ export function formatPrice(price : number){
 
 export default function OrderCard({order} : Props) {
     return (
-        <View style={styles.container}>
+        <View style={styles.container} pointerEvents='box-none'>
             <View style={styles.header}>
                 <Text style={styles.orderName}>Pedido {order.id}</Text>
                 <Text style={styles.orderPrice}>{formatPrice(order.total)}</Text>

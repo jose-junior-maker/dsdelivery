@@ -71,7 +71,7 @@ export default function OrderDetails({ route }: Props) {
     return (
         <>
             <Header />
-            <View style={styles.container}>
+            <View style={styles.container} pointerEvents="box-none">
                 <OrderCard order={order} />
                 <RectButton style={styles.button} onPress={handleNavigation}>
                     <Text style={styles.buttonText}>INICIAR NAVEGAÇÃO</Text>
